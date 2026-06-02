@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+.git
+.github
+coverage
+.env
+Dockerfile
+README.md

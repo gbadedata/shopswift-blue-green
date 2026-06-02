@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+npm-debug.log*
+coverage/
+.nyc_output/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+
+# Docker temporary files
+*.tar
+
+# Terraform intentionally not used in this project
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+
+# Local temp files
+tmp/
+dist/
+build/
+
+# Minikube/local artifacts
+*.pid
