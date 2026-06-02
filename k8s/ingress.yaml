@@ -17,6 +17,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: shopswift-blue-service
+                name: shopswift-active-service
                 port:
                   number: 80
