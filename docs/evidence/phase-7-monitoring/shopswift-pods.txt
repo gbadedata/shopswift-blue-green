@@ -1,0 +1,5 @@
+NAME                               READY   STATUS    RESTARTS   AGE    IP               NODE                            NOMINATED NODE   READINESS GATES
+shopswift-blue-564b747668-74b7k    1/1     Running   0          110m   192.168.28.211   ip-192-168-7-185.ec2.internal   <none>           <none>
+shopswift-blue-564b747668-ktjjk    1/1     Running   0          110m   192.168.61.103   ip-192-168-34-80.ec2.internal   <none>           <none>
+shopswift-green-7d7f9c6d46-7zq75   1/1     Running   0          110m   192.168.48.113   ip-192-168-34-80.ec2.internal   <none>           <none>
+shopswift-green-7d7f9c6d46-9p625   1/1     Running   0          110m   192.168.5.9      ip-192-168-7-185.ec2.internal   <none>           <none>

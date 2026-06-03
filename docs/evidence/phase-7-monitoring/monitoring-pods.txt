@@ -1,0 +1,8 @@
+NAME                                                     READY   STATUS    RESTARTS   AGE   IP               NODE                            NOMINATED NODE   READINESS GATES
+alertmanager-monitoring-kube-prometheus-alertmanager-0   2/2     Running   0          87m   192.168.5.228    ip-192-168-7-185.ec2.internal   <none>           <none>
+monitoring-grafana-7ff64d9bf9-srb5s                      3/3     Running   0          88m   192.168.45.114   ip-192-168-34-80.ec2.internal   <none>           <none>
+monitoring-kube-prometheus-operator-5b6745fdf-bl8wr      1/1     Running   0          88m   192.168.44.49    ip-192-168-34-80.ec2.internal   <none>           <none>
+monitoring-kube-state-metrics-99d68447-9glzk             1/1     Running   0          88m   192.168.18.44    ip-192-168-7-185.ec2.internal   <none>           <none>
+monitoring-prometheus-node-exporter-5nqz5                1/1     Running   0          88m   192.168.7.185    ip-192-168-7-185.ec2.internal   <none>           <none>
+monitoring-prometheus-node-exporter-99zbb                1/1     Running   0          88m   192.168.34.80    ip-192-168-34-80.ec2.internal   <none>           <none>
+prometheus-monitoring-kube-prometheus-prometheus-0       2/2     Running   0          87m   192.168.33.201   ip-192-168-34-80.ec2.internal   <none>           <none>

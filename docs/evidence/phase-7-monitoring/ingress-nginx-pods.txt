@@ -1,0 +1,3 @@
+NAME                                        READY   STATUS    RESTARTS   AGE   IP               NODE                            NOMINATED NODE   READINESS GATES
+ingress-nginx-controller-68886df798-qvq5n   1/1     Running   0          86m   192.168.36.141   ip-192-168-34-80.ec2.internal   <none>           <none>
+ingress-nginx-controller-68886df798-wkzbx   1/1     Running   0          85m   192.168.52.127   ip-192-168-34-80.ec2.internal   <none>           <none>
