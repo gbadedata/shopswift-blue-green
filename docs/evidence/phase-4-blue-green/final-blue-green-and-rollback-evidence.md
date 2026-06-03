@@ -59,13 +59,13 @@ PASSED: /checkout returned 200
 All Ingress smoke tests passed.
 
 ## Blue to Green Zero-Downtime Result
-Paste your observed Blue to Green result here:
-Total requests: <26>
+
+Total requests: 26
 Failed requests: 0
 Ingress zero-downtime availability test passed.
 
 ## Green to Blue Rollback Result
-Paste your observed Green to Blue result here:
-Total requests: <25>
+
+Total requests: 25
 Failed requests: 0
 Ingress zero-downtime availability test passed.
