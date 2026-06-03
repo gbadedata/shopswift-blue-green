@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopswift-blue-service
+  namespace: ecommerce-bluegreen
+  labels:
+    app: shopswift
+    environment: blue
+spec:
+  type: ClusterIP
+  selector:
+    app: shopswift
+    environment: blue
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopswift-green-service
+  namespace: ecommerce-bluegreen
+  labels:
+    app: shopswift
+    environment: green
+spec:
+  type: ClusterIP
+  selector:
+    app: shopswift
+    environment: green
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopswift-active-service
+  namespace: ecommerce-bluegreen
+  labels:
+    app: shopswift
+    role: active
+spec:
+  type: ClusterIP
+  selector:
+    app: shopswift
+    environment: blue
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000

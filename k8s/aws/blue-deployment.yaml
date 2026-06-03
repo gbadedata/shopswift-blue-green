@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopswift-blue
+  namespace: ecommerce-bluegreen
+  labels:
+    app: shopswift
+    environment: blue
+    version: v1.0.0
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shopswift
+      environment: blue
+  template:
+    metadata:
+      labels:
+        app: shopswift
+        environment: blue
+        version: v1.0.0
+    spec:
+      containers:
+        - name: shopswift
+          image: 677276115158.dkr.ecr.us-east-1.amazonaws.com/shopswift:v1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: APP_NAME
+              value: "ShopSwift"
+            - name: APP_VERSION
+              value: "v1.0.0"
+            - name: APP_ENV
+              value: "blue"
+            - name: GIT_COMMIT
+              value: "aws-blue"
+            - name: PORT
+              value: "3000"
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 100
+            capabilities:
+              drop:
+                - ALL
