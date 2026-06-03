@@ -221,7 +221,7 @@ This improved design produced zero failed requests during traffic switching and 
 
 ## Project Phases
 
-### Phase 1 — Local Application Build
+### Phase 1 - Local Application Build
 
 Completed work:
 
@@ -242,7 +242,7 @@ Purpose: validate the application before containerization.
 
 ---
 
-### Phase 2 — Dockerization
+### Phase 2 - Dockerization
 
 Completed work:
 
@@ -265,7 +265,7 @@ Docker build initially failed because `package-lock.json` was out of sync with `
 
 ---
 
-### Phase 3 — Git and GitHub Baseline
+### Phase 3 - Git and GitHub Baseline
 
 Completed work:
 
@@ -283,7 +283,7 @@ https://github.com/gbadedata/shopswift-blue-green
 
 ---
 
-### Phase 4 — Minikube Blue Baseline with NGINX Ingress
+### Phase 4 - Minikube Blue Baseline with NGINX Ingress
 
 Completed work:
 
@@ -310,7 +310,7 @@ curl -H "Host: shopswift.local" http://localhost:8080/version
 
 ---
 
-### Phase 5 — Minikube Blue-to-Green Traffic Switch
+### Phase 5 - Minikube Blue-to-Green Traffic Switch
 
 Completed work:
 
@@ -332,7 +332,7 @@ Ingress zero-downtime availability test passed.
 
 ---
 
-### Phase 6 — Minikube Green-to-Blue Rollback
+### Phase 6 - Minikube Green-to-Blue Rollback
 
 Completed work:
 
@@ -351,7 +351,7 @@ Ingress zero-downtime availability test passed.
 
 ---
 
-### Phase 7 — Broken Green Release Simulation
+### Phase 7 - Broken Green Release Simulation
 
 Completed work:
 
@@ -374,7 +374,7 @@ This phase proves that unsafe releases are blocked before traffic is switched.
 
 ---
 
-### Phase 8 — GitHub Actions CI/CD Validation
+### Phase 8 - GitHub Actions CI/CD Validation
 
 Completed work:
 
@@ -403,7 +403,7 @@ The initial Trivy action version failed because the workflow referenced an unres
 
 ---
 
-### Phase 9 — AWS EKS Cloud Deployment and Blue-Green Validation
+### Phase 9 - AWS EKS Cloud Deployment and Blue-Green Validation
 
 Completed work:
 
@@ -455,7 +455,7 @@ AWS Ingress zero-downtime availability test passed.
 
 ---
 
-### Phase 10 — AWS Prometheus and Grafana Monitoring
+### Phase 10 - AWS Prometheus and Grafana Monitoring
 
 Completed work:
 
@@ -980,16 +980,16 @@ Prometheus and Grafana add observability. They allow the team to see Kubernetes 
 Completed:
 
 ```text
-Phase 1 — Local application
-Phase 2 — Dockerization
-Phase 3 — Git/GitHub baseline
-Phase 4 — Minikube Blue baseline
-Phase 5 — Minikube Blue-to-Green switch
-Phase 6 — Minikube rollback
-Phase 7 — Broken Green release simulation
-Phase 8 — GitHub Actions CI/CD validation
-Phase 9 — AWS EKS deployment and Blue-Green validation
-Phase 10 — AWS Prometheus and Grafana monitoring
+Phase 1 - Local application
+Phase 2 - Dockerization
+Phase 3 - Git/GitHub baseline
+Phase 4 - Minikube Blue baseline
+Phase 5 - Minikube Blue-to-Green switch
+Phase 6 - Minikube rollback
+Phase 7 - Broken Green release simulation
+Phase 8 - GitHub Actions CI/CD validation
+Phase 9 - AWS EKS deployment and Blue-Green validation
+Phase 10 - AWS Prometheus and Grafana monitoring
 ```
 
 The project is now at a strong defence-ready stage.
