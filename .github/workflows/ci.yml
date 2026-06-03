@@ -1,0 +1,82 @@
+name: ShopSwift CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  test-build-scan-validate:
+    name: Test, Build, Scan, and Validate
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install application dependencies
+        working-directory: app
+        run: npm ci
+
+      - name: Run unit tests
+        working-directory: app
+        run: npm test
+
+      - name: Build Docker image
+        working-directory: app
+        run: docker build -t shopswift:ci .
+
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@0.24.0
+        with:
+          image-ref: shopswift:ci
+          format: table
+          exit-code: '0'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Install kubeconform
+        run: |
+          curl -L -o kubeconform.tar.gz https://github.com/yannh/kubeconform/releases/download/v0.6.7/kubeconform-linux-amd64.tar.gz
+          tar -xzf kubeconform.tar.gz
+          sudo mv kubeconform /usr/local/bin/kubeconform
+          kubeconform -v
+
+      - name: Validate Kubernetes manifests
+        run: |
+          kubeconform -strict -summary \
+            k8s/namespace.yaml \
+            k8s/blue-deployment.yaml \
+            k8s/green-deployment.yaml \
+            k8s/broken-green-deployment.yaml \
+            k8s/blue-service.yaml \
+            k8s/green-service.yaml \
+            k8s/active-service.yaml \
+            k8s/ingress.yaml
+
+      - name: Print validation summary
+        run: |
+          echo "CI completed successfully."
+          echo "Tests passed."
+          echo "Docker image built."
+          echo "Trivy scan completed."
+          echo "Kubernetes manifests validated."
