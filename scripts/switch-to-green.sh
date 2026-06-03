@@ -2,15 +2,22 @@
 set -euo pipefail
 
 NAMESPACE="ecommerce-bluegreen"
-INGRESS_NAME="shopswift-ingress"
-TARGET_SERVICE="shopswift-green-service"
+SERVICE_NAME="shopswift-active-service"
 
-echo "Switching NGINX Ingress traffic to Green..."
+echo "Switching active Service selector to Green..."
 
-kubectl patch ingress "$INGRESS_NAME" \
+kubectl patch service "$SERVICE_NAME" \
   -n "$NAMESPACE" \
-  --type=json \
-  -p="[{\"op\":\"replace\",\"path\":\"/spec/rules/0/http/paths/0/backend/service/name\",\"value\":\"$TARGET_SERVICE\"}]"
+  --type='merge' \
+  -p '{"spec":{"selector":{"app":"shopswift","environment":"green"}}}'
 
-echo "Ingress now points to $TARGET_SERVICE"
-kubectl get ingress "$INGRESS_NAME" -n "$NAMESPACE"
+echo "Active Service now routes to Green."
+
+echo ""
+echo "Active Service selector:"
+kubectl get service "$SERVICE_NAME" -n "$NAMESPACE" -o jsonpath='{.spec.selector}'
+echo ""
+
+echo ""
+echo "Active Service endpoints:"
+kubectl get endpoints "$SERVICE_NAME" -n "$NAMESPACE"
